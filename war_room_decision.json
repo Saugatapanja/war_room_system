@@ -1,0 +1,1031 @@
+{
+  "decision": "rollback",
+  "timestamp": "2026-04-09T21:48:16.175386",
+  "rationale": "ROLLBACK RECOMMENDED due to critical issues identified in testing phase. Crash rate elevated to 2.6% (was 0.5%) - +420%, retention declining (44.0% (was 68.0%) - -35%), and race condition in payment processing poses financial risk. Recommend full rollback, issue remediation, and re-launch in 48-72 hours.",
+  "metric_drivers": {
+    "crash_rate": "2.6% (was 0.5%) - +420%",
+    "d1_retention": "44.0% (was 68.0%) - -35%",
+    "api_latency_p95": "212ms (was 145ms) - +46% slower",
+    "activation_rate": "7.0% (target was 10.0%)"
+  },
+  "feedback_summary": {
+    "positive": 8,
+    "neutral": 5,
+    "negative": 19,
+    "total": 32
+  },
+  "agent_recommendations": [
+    {
+      "agent_name": "ProductManager",
+      "analysis": {
+        "activation": {
+          "metric": "activation_rate",
+          "trend": "stable",
+          "change_percent": -9.65,
+          "first_half_avg": 0.13,
+          "second_half_avg": 0.12,
+          "baseline": 0.1
+        },
+        "adoption_status": "below_targets",
+        "crash_rate": {
+          "metric": "crash_rate",
+          "mean": 0.022266666666666667,
+          "std_dev": 0.010017603553364495,
+          "anomalies": [],
+          "anomaly_count": 0
+        },
+        "stability_risks": [
+          "Crash rate 2.60% exceeds threshold"
+        ],
+        "user_sentiment": {
+          "total_feedback": 32,
+          "sentiment_distribution": {
+            "positive": 8,
+            "neutral": 5,
+            "negative": 19
+          },
+          "sentiment_negative_percent": 59.4,
+          "sentiment_positive_percent": 25.0,
+          "category_breakdown": {
+            "feature": {
+              "count": 6,
+              "positive": 4,
+              "negative": 0,
+              "examples": []
+            },
+            "ux": {
+              "count": 3,
+              "positive": 1,
+              "negative": 1,
+              "examples": [
+                "UI is confusing, not user friendly"
+              ]
+            },
+            "performance": {
+              "count": 8,
+              "positive": 2,
+              "negative": 5,
+              "examples": [
+                "Severe latency issues - app is barely usable now.",
+                "Latency is terrible, loads taking 5+ seconds.",
+                "Performance still bad in peak hours."
+              ]
+            },
+            "bug": {
+              "count": 10,
+              "positive": 0,
+              "negative": 9,
+              "examples": [
+                "App keeps crashing when I use the new feature.",
+                "Getting timeouts repeatedly with new feature.",
+                "Still experiencing crashes, please fix ASAP."
+              ]
+            },
+            "crash": {
+              "count": 5,
+              "positive": 1,
+              "negative": 4,
+              "examples": [
+                "App crashed 3 times today using new feature.",
+                "Same crash issue persists - very frustrating.",
+                "Crashes persist despite update. Very disappointed."
+              ]
+            }
+          },
+          "critical_issues": [
+            {
+              "category": "bug",
+              "message": "App keeps crashing when I use the new feature.",
+              "timestamp": "2024-01-10 09:00"
+            },
+            {
+              "category": "performance",
+              "message": "Severe latency issues - app is barely usable now.",
+              "timestamp": "2024-01-10 10:30"
+            },
+            {
+              "category": "bug",
+              "message": "Getting timeouts repeatedly with new feature.",
+              "timestamp": "2024-01-10 14:15"
+            },
+            {
+              "category": "crash",
+              "message": "App crashed 3 times today using new feature.",
+              "timestamp": "2024-01-11 08:45"
+            },
+            {
+              "category": "performance",
+              "message": "Latency is terrible, loads taking 5+ seconds.",
+              "timestamp": "2024-01-11 10:00"
+            },
+            {
+              "category": "crash",
+              "message": "Same crash issue persists - very frustrating.",
+              "timestamp": "2024-01-11 13:20"
+            },
+            {
+              "category": "bug",
+              "message": "Still experiencing crashes, please fix ASAP.",
+              "timestamp": "2024-01-11 15:50"
+            },
+            {
+              "category": "bug",
+              "message": "Feature doesn't work as described in preview.",
+              "timestamp": "2024-01-11 09:30"
+            },
+            {
+              "category": "bug",
+              "message": "Payment failed but was charged anyway.",
+              "timestamp": "2024-01-11 16:15"
+            },
+            {
+              "category": "bug",
+              "message": "Lost data when switching to new feature.",
+              "timestamp": "2024-01-12 08:00"
+            },
+            {
+              "category": "crash",
+              "message": "Crashes persist despite update. Very disappointed.",
+              "timestamp": "2024-01-12 10:45"
+            },
+            {
+              "category": "bug",
+              "message": "Still slow and buggy. Considering canceling subscription.",
+              "timestamp": "2024-01-12 14:00"
+            },
+            {
+              "category": "bug",
+              "message": "Too buggy in current state.",
+              "timestamp": "2024-01-09 16:30"
+            },
+            {
+              "category": "bug",
+              "message": "Rollout was too aggressive - should have gradual release.",
+              "timestamp": "2024-01-13 08:30"
+            },
+            {
+              "category": "performance",
+              "message": "Performance still bad in peak hours.",
+              "timestamp": "2024-01-13 16:45"
+            },
+            {
+              "category": "performance",
+              "message": "App got slower after the update.",
+              "timestamp": "2024-01-14 09:15"
+            },
+            {
+              "category": "performance",
+              "message": "Latency spikes every few minutes.",
+              "timestamp": "2024-01-14 13:00"
+            },
+            {
+              "category": "crash",
+              "message": "Support queue backed up - no response for 2 hours.",
+              "timestamp": "2024-01-14 15:45"
+            }
+          ],
+          "critical_issue_count": 18
+        },
+        "user_impact": "negative",
+        "feedback_themes": {
+          "themes": {
+            "feature": {
+              "count": 9,
+              "sentiment": {
+                "positive": 2,
+                "neutral": 2,
+                "negative": 5
+              }
+            },
+            "crash": {
+              "count": 7,
+              "sentiment": {
+                "positive": 2,
+                "neutral": 0,
+                "negative": 5
+              }
+            },
+            "great": {
+              "count": 3,
+              "sentiment": {
+                "positive": 3,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "slow": {
+              "count": 3,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 1,
+                "negative": 2
+              }
+            },
+            "latency": {
+              "count": 3,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 3
+              }
+            },
+            "bug": {
+              "count": 2,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 2
+              }
+            },
+            "love": {
+              "count": 1,
+              "sentiment": {
+                "positive": 1,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "excellent": {
+              "count": 1,
+              "sentiment": {
+                "positive": 1,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "timeout": {
+              "count": 1,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 1
+              }
+            }
+          },
+          "total_unique_themes": 9
+        },
+        "known_issues_critical": 3,
+        "known_issues_details": [
+          {
+            "title": "Memory leak in feature initialization",
+            "description": "New feature causes gradual memory increase under heavy load, potentially leading to crashes after extended use.",
+            "severity": "high",
+            "affected_users": "Users with sessions >30 min",
+            "mitigation": "Hotfix deployed 2024-01-11. Requires app restart to take effect."
+          },
+          {
+            "title": "Query optimization issue causing latency",
+            "description": "Database query in new feature was not properly indexed, causing p95 latency to increase by 50-70ms.",
+            "severity": "high",
+            "affected_users": "All feature users",
+            "mitigation": "Database index created. Should resolve with next deployment."
+          },
+          {
+            "title": "Race condition in payment processing",
+            "description": "Under concurrent load, rare race condition causes transaction records to mismatch.",
+            "severity": "critical",
+            "affected_users": "Small % of payment users (~0.5%)",
+            "mitigation": "Code fix identified. Requires careful rollout."
+          }
+        ],
+        "llm_used": false
+      },
+      "recommendation": "rollback",
+      "confidence": 0.5499999999999999,
+      "reasoning": "Based on adoption status (below_targets) and user impact (negative), recommending rollback."
+    },
+    {
+      "agent_name": "DataAnalyst",
+      "analysis": {
+        "anomaly_report": {
+          "activation_rate": {
+            "metric": "activation_rate",
+            "mean": 0.12466666666666668,
+            "std_dev": 0.03563037762252611,
+            "anomalies": [],
+            "anomaly_count": 0
+          },
+          "dau": {
+            "metric": "dau",
+            "mean": 488,
+            "std_dev": 17.09218702047392,
+            "anomalies": [
+              {
+                "date": "2026-03-26",
+                "value": 450,
+                "z_score": 2.2232380183110334,
+                "deviation": "low"
+              }
+            ],
+            "anomaly_count": 1
+          },
+          "d1_retention": {
+            "metric": "d1_retention",
+            "mean": 0.5786666666666667,
+            "std_dev": 0.08122866020128142,
+            "anomalies": [],
+            "anomaly_count": 0
+          },
+          "crash_rate": {
+            "metric": "crash_rate",
+            "mean": 0.022266666666666667,
+            "std_dev": 0.010017603553364495,
+            "anomalies": [],
+            "anomaly_count": 0
+          },
+          "api_latency_p95": {
+            "metric": "api_latency_p95",
+            "mean": 197.13333333333333,
+            "std_dev": 31.99523774087697,
+            "anomalies": [],
+            "anomaly_count": 0
+          },
+          "payment_success_rate": {
+            "metric": "payment_success_rate",
+            "mean": 0.9743333333333333,
+            "std_dev": 0.0060198085715490405,
+            "anomalies": [],
+            "anomaly_count": 0
+          }
+        },
+        "trends": {
+          "activation_rate": {
+            "metric": "activation_rate",
+            "trend": "stable",
+            "change_percent": -9.65,
+            "first_half_avg": 0.13,
+            "second_half_avg": 0.12,
+            "baseline": 0.1
+          },
+          "dau": {
+            "metric": "dau",
+            "trend": "stable",
+            "change_percent": 4.84,
+            "first_half_avg": 475.71,
+            "second_half_avg": 498.75,
+            "baseline": 450
+          },
+          "d1_retention": {
+            "metric": "d1_retention",
+            "trend": "degrading",
+            "change_percent": -20.58,
+            "first_half_avg": 0.65,
+            "second_half_avg": 0.52,
+            "baseline": 0.68
+          },
+          "crash_rate": {
+            "metric": "crash_rate",
+            "trend": "improving",
+            "change_percent": 116.93,
+            "first_half_avg": 0.01,
+            "second_half_avg": 0.03,
+            "baseline": 0.005
+          },
+          "api_latency_p95": {
+            "metric": "api_latency_p95",
+            "trend": "improving",
+            "change_percent": 33.27,
+            "first_half_avg": 167.43,
+            "second_half_avg": 223.12,
+            "baseline": 145
+          },
+          "payment_success_rate": {
+            "metric": "payment_success_rate",
+            "trend": "stable",
+            "change_percent": -0.98,
+            "first_half_avg": 0.98,
+            "second_half_avg": 0.97,
+            "baseline": 0.985
+          }
+        },
+        "degrading_metric_count": 1,
+        "system_health": {
+          "overall_health_percent": 59.7,
+          "health_rating": "poor",
+          "component_scores": {
+            "activation_rate": 0.7,
+            "dau": 1.0,
+            "d1_retention": 0.65,
+            "crash_rate": 0,
+            "api_latency_p95": 0.54,
+            "payment_success_rate": 0.99
+          }
+        },
+        "baseline_comparison": {
+          "metric_comparisons": {
+            "activation_rate": {
+              "baseline": 0.1,
+              "current": 0.07,
+              "change_percent": -30.0,
+              "impact": "negative"
+            },
+            "dau": {
+              "baseline": 450,
+              "current": 485,
+              "change_percent": 7.78,
+              "impact": "positive"
+            },
+            "d1_retention": {
+              "baseline": 0.68,
+              "current": 0.44,
+              "change_percent": -35.29,
+              "impact": "negative"
+            },
+            "crash_rate": {
+              "baseline": 0.005,
+              "current": 0.026,
+              "change_percent": 420.0,
+              "impact": "negative"
+            },
+            "api_latency_p95": {
+              "baseline": 145,
+              "current": 212,
+              "change_percent": 46.21,
+              "impact": "negative"
+            },
+            "payment_success_rate": {
+              "baseline": 0.985,
+              "current": 0.973,
+              "change_percent": -1.22,
+              "impact": "negative"
+            }
+          },
+          "positive_metrics": 1,
+          "negative_metrics": 5
+        },
+        "data_quality": {
+          "avg_data_points_per_metric": 15.0,
+          "total_feedback_entries": 32,
+          "sufficient_metric_data": true,
+          "sufficient_user_feedback": true,
+          "overall_quality_score": 1.0
+        },
+        "llm_used": false
+      },
+      "recommendation": "pause",
+      "confidence": 0.55,
+      "reasoning": "System health at 59.7% (poor). Recommending based on quantitative metrics."
+    },
+    {
+      "agent_name": "MarketingComms",
+      "analysis": {
+        "customer_sentiment": {
+          "total_feedback": 32,
+          "sentiment_distribution": {
+            "positive": 8,
+            "neutral": 5,
+            "negative": 19
+          },
+          "sentiment_negative_percent": 59.4,
+          "sentiment_positive_percent": 25.0,
+          "category_breakdown": {
+            "feature": {
+              "count": 6,
+              "positive": 4,
+              "negative": 0,
+              "examples": []
+            },
+            "ux": {
+              "count": 3,
+              "positive": 1,
+              "negative": 1,
+              "examples": [
+                "UI is confusing, not user friendly"
+              ]
+            },
+            "performance": {
+              "count": 8,
+              "positive": 2,
+              "negative": 5,
+              "examples": [
+                "Severe latency issues - app is barely usable now.",
+                "Latency is terrible, loads taking 5+ seconds.",
+                "Performance still bad in peak hours."
+              ]
+            },
+            "bug": {
+              "count": 10,
+              "positive": 0,
+              "negative": 9,
+              "examples": [
+                "App keeps crashing when I use the new feature.",
+                "Getting timeouts repeatedly with new feature.",
+                "Still experiencing crashes, please fix ASAP."
+              ]
+            },
+            "crash": {
+              "count": 5,
+              "positive": 1,
+              "negative": 4,
+              "examples": [
+                "App crashed 3 times today using new feature.",
+                "Same crash issue persists - very frustrating.",
+                "Crashes persist despite update. Very disappointed."
+              ]
+            }
+          },
+          "critical_issues": [
+            {
+              "category": "bug",
+              "message": "App keeps crashing when I use the new feature.",
+              "timestamp": "2024-01-10 09:00"
+            },
+            {
+              "category": "performance",
+              "message": "Severe latency issues - app is barely usable now.",
+              "timestamp": "2024-01-10 10:30"
+            },
+            {
+              "category": "bug",
+              "message": "Getting timeouts repeatedly with new feature.",
+              "timestamp": "2024-01-10 14:15"
+            },
+            {
+              "category": "crash",
+              "message": "App crashed 3 times today using new feature.",
+              "timestamp": "2024-01-11 08:45"
+            },
+            {
+              "category": "performance",
+              "message": "Latency is terrible, loads taking 5+ seconds.",
+              "timestamp": "2024-01-11 10:00"
+            },
+            {
+              "category": "crash",
+              "message": "Same crash issue persists - very frustrating.",
+              "timestamp": "2024-01-11 13:20"
+            },
+            {
+              "category": "bug",
+              "message": "Still experiencing crashes, please fix ASAP.",
+              "timestamp": "2024-01-11 15:50"
+            },
+            {
+              "category": "bug",
+              "message": "Feature doesn't work as described in preview.",
+              "timestamp": "2024-01-11 09:30"
+            },
+            {
+              "category": "bug",
+              "message": "Payment failed but was charged anyway.",
+              "timestamp": "2024-01-11 16:15"
+            },
+            {
+              "category": "bug",
+              "message": "Lost data when switching to new feature.",
+              "timestamp": "2024-01-12 08:00"
+            },
+            {
+              "category": "crash",
+              "message": "Crashes persist despite update. Very disappointed.",
+              "timestamp": "2024-01-12 10:45"
+            },
+            {
+              "category": "bug",
+              "message": "Still slow and buggy. Considering canceling subscription.",
+              "timestamp": "2024-01-12 14:00"
+            },
+            {
+              "category": "bug",
+              "message": "Too buggy in current state.",
+              "timestamp": "2024-01-09 16:30"
+            },
+            {
+              "category": "bug",
+              "message": "Rollout was too aggressive - should have gradual release.",
+              "timestamp": "2024-01-13 08:30"
+            },
+            {
+              "category": "performance",
+              "message": "Performance still bad in peak hours.",
+              "timestamp": "2024-01-13 16:45"
+            },
+            {
+              "category": "performance",
+              "message": "App got slower after the update.",
+              "timestamp": "2024-01-14 09:15"
+            },
+            {
+              "category": "performance",
+              "message": "Latency spikes every few minutes.",
+              "timestamp": "2024-01-14 13:00"
+            },
+            {
+              "category": "crash",
+              "message": "Support queue backed up - no response for 2 hours.",
+              "timestamp": "2024-01-14 15:45"
+            }
+          ],
+          "critical_issue_count": 18
+        },
+        "perception_score": 25.0,
+        "message_themes": {
+          "themes": {
+            "feature": {
+              "count": 9,
+              "sentiment": {
+                "positive": 2,
+                "neutral": 2,
+                "negative": 5
+              }
+            },
+            "crash": {
+              "count": 7,
+              "sentiment": {
+                "positive": 2,
+                "neutral": 0,
+                "negative": 5
+              }
+            },
+            "great": {
+              "count": 3,
+              "sentiment": {
+                "positive": 3,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "slow": {
+              "count": 3,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 1,
+                "negative": 2
+              }
+            },
+            "latency": {
+              "count": 3,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 3
+              }
+            },
+            "bug": {
+              "count": 2,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 2
+              }
+            },
+            "love": {
+              "count": 1,
+              "sentiment": {
+                "positive": 1,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "excellent": {
+              "count": 1,
+              "sentiment": {
+                "positive": 1,
+                "neutral": 0,
+                "negative": 0
+              }
+            },
+            "timeout": {
+              "count": 1,
+              "sentiment": {
+                "positive": 0,
+                "neutral": 0,
+                "negative": 1
+              }
+            }
+          },
+          "total_unique_themes": 9
+        },
+        "critical_communication_issues": 18,
+        "critical_issues_list": [
+          {
+            "category": "bug",
+            "message": "App keeps crashing when I use the new feature.",
+            "timestamp": "2024-01-10 09:00"
+          },
+          {
+            "category": "performance",
+            "message": "Severe latency issues - app is barely usable now.",
+            "timestamp": "2024-01-10 10:30"
+          },
+          {
+            "category": "bug",
+            "message": "Getting timeouts repeatedly with new feature.",
+            "timestamp": "2024-01-10 14:15"
+          },
+          {
+            "category": "crash",
+            "message": "App crashed 3 times today using new feature.",
+            "timestamp": "2024-01-11 08:45"
+          },
+          {
+            "category": "performance",
+            "message": "Latency is terrible, loads taking 5+ seconds.",
+            "timestamp": "2024-01-11 10:00"
+          }
+        ],
+        "stakeholder_concerns": [
+          "feature",
+          "crash",
+          "slow",
+          "latency",
+          "bug",
+          "timeout"
+        ],
+        "llm_used": false
+      },
+      "recommendation": "pause",
+      "confidence": 0.3,
+      "reasoning": "Customer perception at 25.0%. 18 critical comms issues identified. Main concerns: feature, crash, slow."
+    },
+    {
+      "agent_name": "RiskCritic",
+      "analysis": {
+        "known_issues_by_severity": {
+          "low": 1,
+          "medium": 1,
+          "high": 2,
+          "critical": 1
+        },
+        "critical_issues": [
+          {
+            "title": "Race condition in payment processing",
+            "description": "Under concurrent load, rare race condition causes transaction records to mismatch.",
+            "severity": "critical",
+            "affected_users": "Small % of payment users (~0.5%)",
+            "mitigation": "Code fix identified. Requires careful rollout."
+          }
+        ],
+        "high_issues": [
+          {
+            "title": "Memory leak in feature initialization",
+            "description": "New feature causes gradual memory increase under heavy load, potentially leading to crashes after extended use.",
+            "severity": "high",
+            "affected_users": "Users with sessions >30 min",
+            "mitigation": "Hotfix deployed 2024-01-11. Requires app restart to take effect."
+          },
+          {
+            "title": "Query optimization issue causing latency",
+            "description": "Database query in new feature was not properly indexed, causing p95 latency to increase by 50-70ms.",
+            "severity": "high",
+            "affected_users": "All feature users",
+            "mitigation": "Database index created. Should resolve with next deployment."
+          }
+        ],
+        "metric_based_risks": [],
+        "critical_user_issues": [
+          {
+            "category": "bug",
+            "message": "App keeps crashing when I use the new feature.",
+            "timestamp": "2024-01-10 09:00"
+          },
+          {
+            "category": "performance",
+            "message": "Severe latency issues - app is barely usable now.",
+            "timestamp": "2024-01-10 10:30"
+          },
+          {
+            "category": "bug",
+            "message": "Getting timeouts repeatedly with new feature.",
+            "timestamp": "2024-01-10 14:15"
+          },
+          {
+            "category": "crash",
+            "message": "App crashed 3 times today using new feature.",
+            "timestamp": "2024-01-11 08:45"
+          },
+          {
+            "category": "performance",
+            "message": "Latency is terrible, loads taking 5+ seconds.",
+            "timestamp": "2024-01-11 10:00"
+          },
+          {
+            "category": "crash",
+            "message": "Same crash issue persists - very frustrating.",
+            "timestamp": "2024-01-11 13:20"
+          },
+          {
+            "category": "bug",
+            "message": "Still experiencing crashes, please fix ASAP.",
+            "timestamp": "2024-01-11 15:50"
+          },
+          {
+            "category": "bug",
+            "message": "Feature doesn't work as described in preview.",
+            "timestamp": "2024-01-11 09:30"
+          },
+          {
+            "category": "bug",
+            "message": "Payment failed but was charged anyway.",
+            "timestamp": "2024-01-11 16:15"
+          },
+          {
+            "category": "bug",
+            "message": "Lost data when switching to new feature.",
+            "timestamp": "2024-01-12 08:00"
+          },
+          {
+            "category": "crash",
+            "message": "Crashes persist despite update. Very disappointed.",
+            "timestamp": "2024-01-12 10:45"
+          },
+          {
+            "category": "bug",
+            "message": "Still slow and buggy. Considering canceling subscription.",
+            "timestamp": "2024-01-12 14:00"
+          },
+          {
+            "category": "bug",
+            "message": "Too buggy in current state.",
+            "timestamp": "2024-01-09 16:30"
+          },
+          {
+            "category": "bug",
+            "message": "Rollout was too aggressive - should have gradual release.",
+            "timestamp": "2024-01-13 08:30"
+          },
+          {
+            "category": "performance",
+            "message": "Performance still bad in peak hours.",
+            "timestamp": "2024-01-13 16:45"
+          },
+          {
+            "category": "performance",
+            "message": "App got slower after the update.",
+            "timestamp": "2024-01-14 09:15"
+          },
+          {
+            "category": "performance",
+            "message": "Latency spikes every few minutes.",
+            "timestamp": "2024-01-14 13:00"
+          },
+          {
+            "category": "crash",
+            "message": "Support queue backed up - no response for 2 hours.",
+            "timestamp": "2024-01-14 15:45"
+          }
+        ],
+        "rollout_scope_risk": "medium - 20-50% exposed",
+        "assumption_challenges": [
+          "Assumption: Race condition in payment processing can be mitigated. Challenge: Critical issue with no clear resolution."
+        ],
+        "llm_used": false
+      },
+      "recommendation": "rollback",
+      "confidence": 0.5,
+      "reasoning": "Identified 1 critical, 2 high severity issues. 1 key assumption challenges. Recommending cautious approach."
+    }
+  ],
+  "risk_register": [
+    {
+      "risk_id": "R1",
+      "title": "Memory leak in feature initialization",
+      "description": "New feature causes gradual memory increase under heavy load, potentially leading to crashes after extended use.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Hotfix deployed 2024-01-11. Requires app restart to take effect.",
+      "owner": "Engineering Lead"
+    },
+    {
+      "risk_id": "R2",
+      "title": "Query optimization issue causing latency",
+      "description": "Database query in new feature was not properly indexed, causing p95 latency to increase by 50-70ms.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Database index created. Should resolve with next deployment.",
+      "owner": "Engineering Lead"
+    },
+    {
+      "risk_id": "R3",
+      "title": "Race condition in payment processing",
+      "description": "Under concurrent load, rare race condition causes transaction records to mismatch.",
+      "likelihood": "high",
+      "impact": "critical",
+      "mitigation": "Code fix identified. Requires careful rollout.",
+      "owner": "Engineering Lead"
+    },
+    {
+      "risk_id": "R4",
+      "title": "Cache invalidation bug",
+      "description": "Feature cache not properly invalidating on data updates, causing stale data display.",
+      "likelihood": "medium",
+      "impact": "medium",
+      "mitigation": "Workaround: manual cache clear. Permanent fix in next sprint.",
+      "owner": "Engineering Lead"
+    },
+    {
+      "risk_id": "R5",
+      "title": "Incomplete feature rollout config",
+      "description": "Rollout percentage calculation has edge cases at boundaries.",
+      "likelihood": "medium",
+      "impact": "low",
+      "mitigation": "Non-critical, will be fixed in next release.",
+      "owner": "Engineering Lead"
+    },
+    {
+      "risk_id": "R6",
+      "title": "Elevated crash rate trending upward",
+      "description": "Crash rate at 2.6%, up from 0.5% baseline. Trend is worsening, indicating potential deep issue.",
+      "likelihood": "high",
+      "impact": "high",
+      "mitigation": "Implement aggressive monitoring, prepare rollback procedure",
+      "owner": "Platform Team"
+    },
+    {
+      "risk_id": "R7",
+      "title": "Significant customer dissatisfaction",
+      "description": "19 negative feedback entries with repeated crash/latency complaints.",
+      "likelihood": "medium",
+      "impact": "high",
+      "mitigation": "Escalate support, prioritize issue resolution, prepare communication",
+      "owner": "Support Lead"
+    }
+  ],
+  "action_plan": [
+    {
+      "action_id": "A1",
+      "description": "Initiate immediate rollback process - disable feature flag",
+      "owner": "Platform Engineering",
+      "due_in_hours": 1,
+      "priority": "critical",
+      "dependencies": []
+    },
+    {
+      "action_id": "A2",
+      "description": "Investigate race condition in payment processing - create incident ticket",
+      "owner": "Database Team",
+      "due_in_hours": 2,
+      "priority": "critical",
+      "dependencies": [
+        "A1"
+      ]
+    },
+    {
+      "action_id": "A3",
+      "description": "Performance analysis on memory leak and query optimization",
+      "owner": "Engineering Lead",
+      "due_in_hours": 4,
+      "priority": "critical",
+      "dependencies": [
+        "A1"
+      ]
+    },
+    {
+      "action_id": "A4",
+      "description": "Customer outreach - explain rollback, provide ETA",
+      "owner": "Customer Success",
+      "due_in_hours": 2,
+      "priority": "high",
+      "dependencies": [
+        "A1"
+      ]
+    },
+    {
+      "action_id": "A5",
+      "description": "Root cause analysis meeting - all teams, document findings",
+      "owner": "Product Manager",
+      "due_in_hours": 8,
+      "priority": "high",
+      "dependencies": []
+    },
+    {
+      "action_id": "A6",
+      "description": "Prepare relaunch strategy with fixes - target 48-72 hour patch",
+      "owner": "Product Manager",
+      "due_in_hours": 24,
+      "priority": "high",
+      "dependencies": [
+        "A3",
+        "A5"
+      ]
+    }
+  ],
+  "communication_plan": {
+    "internal_message": "URGENT: We are rolling back the Smart Recommendations feature effective immediately. Critical issues identified in production: payment processing race condition, elevated crash rate, and memory leaks. All 40% of users currently using the feature will revert to previous experience. Engineering team beginning root cause investigation. Relaunch planned for 48-72 hours pending validation.",
+    "external_message": "We've temporarily disabled the Smart Recommendations feature to ensure platform stability. We identified and are fixing some technical issues that affected a small portion of our users. Your experience has been restored to normal, and we'll relaunch an improved version shortly. Thank you for your patience and feedback that helped us catch this.",
+    "channels": [
+      "Email",
+      "In-App Notification",
+      "Status Page",
+      "Twitter"
+    ],
+    "audience": [
+      "Internal Team",
+      "All Affected Users",
+      "Broader Customer Base"
+    ],
+    "timing": "Immediate - within 30 minutes of decision",
+    "escalation_contact": "Chief Product Officer"
+  },
+  "overall_confidence": 0.47500000000000003,
+  "confidence_factors": {
+    "more_data": "Extend observation period to 21 days for more stable trend data",
+    "monitoring": "Deploy real-time alerting on crash/latency spikes",
+    "testing": "Run controlled load tests with current production metrics",
+    "stability": "Ensure crash rate trending downward for 12+ hours",
+    "retention": "Confirm D1 retention stabilizes above 50%",
+    "support": "Monitor support queue - ensure not overwhelmed",
+    "consensus": "Align leadership on risk tolerance and decision threshold",
+    "communication": "Validate messaging with customer success team"
+  }
+}
